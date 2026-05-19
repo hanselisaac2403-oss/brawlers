@@ -1,28 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<nav class="barra-navegacion">
- <div class="logo">
-  <img style="width: 80px;" src="https://static.wikia.nocookie.net/brawlstars/images/0/01/Brawl_Stars_Logo.png/revision/latest?cb=20250424202238&path-prefix=es" alt="logo">
-</div>
-  <ul> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brawl Stars</title>
 
+  <style>
+
+    /* RESET */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    /* BODY */
+    body {
+      background-color: #ff1010;
+      color: #fcfcfb;
+      font-family: Arial, sans-serif;
+    }
+
+    /* NAVBAR */
+    .barra-navegacion {
+      background-color: #fce25a;
+      padding: 15px 20px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      flex-wrap: wrap;
+    }
+
+    .logo img{
+      width: 80px;
+    }
+
+    .barra-navegacion ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .barra-navegacion li{
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .contenedor-principal {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* CONTENIDO */
+    .contenido {
+      background-color: #16213e;
+      padding: 20px;
+      border-radius: 15px;
+
+      flex: 2;
+      min-width: 280px;
+    }
+
+    /* BARRA LATERAL */
+    .barra-lateral {
+      background-color: #0f3460;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #e94560;
+
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* GALERÍA */
+    .galeria {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      padding: 20px;
+    }
+
+    /* TARJETAS */
+    .personaje {
+      background-color: #16213e;
+      border-radius: 15px;
+      padding: 15px;
+
+      width: 100%;
+      max-width: 400px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: transform 0.3s;
+    }
+
+    .personaje:hover{
+      transform: scale(1.03);
+    }
+
+    /* IMÁGENES */
+    .personaje img {
+      width: 100%;
+      height: 250px;
+
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* INFO OCULTA */
+    .info {
+      margin-top: 10px;
+
+      max-height: 0;
+      overflow: hidden;
+
+      opacity: 0;
+
+      transition: all 0.5s ease;
+    }
+
+    /* INFO VISIBLE */
+    .personaje.activo .info{
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .info p {
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    /* BOTÓN */
+    .boton {
+      display: block;
+
+      margin: 30px auto;
+
+      color: chartreuse;
+      background-color: black;
+
+      border: none;
+      border-radius: 10px;
+
+      padding: 15px 25px;
+
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      .barra-navegacion {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .barra-navegacion ul {
+        justify-content: center;
+      }
+
+      .contenedor-principal {
+        flex-direction: column;
+      }
+
+      .personaje img {
+        height: 200px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="barra-navegacion">
+
+    <div class="logo">
+      <img src="https://static.wikia.nocookie.net/brawlstars/images/0/01/Brawl_Stars_Logo.png/revision/latest?cb=20250424202238&path-prefix=es" alt="logo">
+    </div>
+
+    <ul>
       <li>Inicio</li>
       <li>Juegos</li>
       <li>Contacto</li>
     </ul>
+
   </nav>
-    <div class="contenedor-principal">
-    
+
+  <!-- CONTENIDO -->
+  <div class="contenedor-principal">
+
     <main class="contenido">
       <h1>Brawler</h1>
-      <p>stats de los brawler.</p>
-    
+      <p>Stats de los brawlers.</p>
     </main>
 
     <aside class="barra-lateral">
@@ -31,217 +218,98 @@
       <p>Poder especial: Aprender rápido</p>
     </aside>
 
-  </div> 
-  
-  
+  </div>
+
+  <!-- GALERÍA -->
   <div class="galeria">
 
-  <div class="personaje">
-    <img src="https://tse3.mm.bing.net/th/id/OIP.57A7V4EKU6p82pqN-1f64AHaFj?w=600&h=450&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Kit">
+    <!-- KIT -->
+    <div class="personaje">
 
-    <div class="info">
-      <h2>Kit</h2>
-      <p>
-        🐱 Características generales de Kit <br>
-        ⭐ Rareza: Legendario <br>
-        🧩 Clase: Soporte <br>
-        ❤️ Vida: Media <br>
-        ⚡ Velocidad: Muy rápida
-      </p>
+      <img src="https://tse3.mm.bing.net/th/id/OIP.57A7V4EKU6p82pqN-1f64AHaFj?w=600&h=450&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Kit">
+
+      <div class="info">
+        <h2>Kit</h2>
+
+        <p>
+          🐱 Características generales de Kit <br>
+          ⭐ Rareza: Legendario <br>
+          🧩 Clase: Soporte <br>
+          ❤️ Vida: Media <br>
+          ⚡ Velocidad: Muy rápida
+        </p>
+      </div>
+
     </div>
+
+    <!-- LEON -->
+    <div class="personaje">
+
+      <img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2024/07/an-image-of-leon-in-brawl-stars.jpg" alt="Leon">
+
+      <div class="info">
+        <h2>Leon</h2>
+
+        <p>
+          🦎 Características generales <br>
+          ⭐ Rareza: Legendario <br>
+          🧩 Clase: Asesino <br>
+          ❤️ Vida: Baja-media <br>
+          ⚡ Velocidad: Muy rápida
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CHESTER -->
+    <div class="personaje">
+
+      <img src="https://i.ytimg.com/vi/NDYZaEAH5bA/oar2.jpg?sqp=-oaymwEYCNAFENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLB0SmhbMtRiqp3PpJ-isD4JJbeFPA" alt="Chester">
+
+      <div class="info">
+        <h2>Chester</h2>
+
+        <p>
+          🎭 Características generales <br>
+          ⭐ Rareza: Legendario <br>
+          🧩 Clase: Daño <br>
+          ❤️ Vida: Media <br>
+          ⚡ Velocidad: Normal
+        </p>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="personaje">
-    <img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2024/07/an-image-of-leon-in-brawl-stars.jpg" alt="Leon">
+  <!-- BOTÓN -->
+  <button
+    class="boton"
+    onclick="alert('desperdiciaste 0.5 segundos de tu vida')"
+  >
+    Haz clic
+  </button>
 
-    <div class="info">
-      <h2>Leon</h2>
-      <p>
-        🦎 Características generales <br>
-        ⭐ Rareza: Legendario <br>
-        🧩 Clase: Asesino <br>
-        ❤️ Vida: Baja-media <br>
-        ⚡ Velocidad: Muy rápida
-      </p>
-    </div>
-  </div>
+  <!-- JAVASCRIPT -->
+  <script>
 
-  <div class="personaje">
-    <img src="https://i.ytimg.com/vi/NDYZaEAH5bA/oar2.jpg?sqp=-oaymwEYCNAFENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLB0SmhbMtRiqp3PpJ-isD4JJbeFPA" alt="Chester">
+    // Selecciona todas las tarjetas
+    const tarjetas = document.querySelectorAll(".personaje");
 
-    <div class="info">
-      <h2>Chester</h2>
-      <p>
-        🎭 Características generales <br>
-        ⭐ Rareza: Legendario <br>
-        🧩 Clase: Daño <br>
-        ❤️ Vida: Media <br>
-        ⚡ Velocidad: Normal
-      </p>
-    </div>
-  </div>
+    // Recorre cada tarjeta
+    tarjetas.forEach((tarjeta) => {
 
-</div>
+      // Evento click
+      tarjeta.addEventListener("click", () => {
+
+        // Activa o desactiva la clase
+        tarjeta.classList.toggle("activo");
+
+      });
+
+    });
+
+  </script>
+
 </body>
-<button class="boton" onclick="alert('desperdiciaste 0.5 segundos de tu vida')">Haz clic</button
 </html>
-
-<style>
-
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-/* BODY */
-body {
-  background-color: #ff1010;
-  color: #fcfcfb;
-  font-family: Arial, sans-serif;
-}
-
-/* NAVBAR */
-.barra-navegacion {
-  background-color: #fce25a;
-  padding: 15px 20px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  flex-wrap: wrap;
-}
-
-.logo img{
-  width: 80px;
-}
-
-.barra-navegacion ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  flex-wrap: wrap;
-}
-
-.barra-navegacion li{
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* CONTENEDOR PRINCIPAL */
-.contenedor-principal {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-
-  flex-wrap: wrap;
-}
-
-/* CONTENIDO */
-.contenido {
-  background-color: #16213e;
-  padding: 20px;
-  border-radius: 15px;
-
-  flex: 2;
-  min-width: 280px;
-}
-
-/* BARRA LATERAL */
-.barra-lateral {
-  background-color: #0f3460;
-  padding: 20px;
-  border-radius: 15px;
-  border: 2px solid #e94560;
-
-  flex: 1;
-  min-width: 250px;
-}
-
-/* GALERÍA */
-.galeria {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-
-  flex-wrap: wrap;
-
-  padding: 20px;
-}
-
-/* TARJETAS */
-.personaje {
-  background-color: #16213e;
-  border-radius: 15px;
-  padding: 15px;
-
-  width: 100%;
-  max-width: 400px;
-
-  text-align: center;
-}
-
-/* IMÁGENES */
-.personaje img {
-  width: 100%;
-  height: 250px;
-
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* INFO */
-.info {
-  margin-top: 10px;
-}
-
-.info p {
-  text-align: left;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* BOTÓN */
-.boton {
-  display: block;
-
-  margin: 30px auto;
-
-  color: chartreuse;
-  background-color: black;
-
-  border: none;
-  border-radius: 10px;
-
-  padding: 15px 25px;
-
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* RESPONSIVE PARA CELULARES */
-@media (max-width: 768px) {
-
-  .barra-navegacion {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .barra-navegacion ul {
-    justify-content: center;
-  }
-
-  .contenedor-principal {
-    flex-direction: column;
-  }
-
-  .personaje img {
-    height: 200px;
-  }
-
-}
-
-</style>
