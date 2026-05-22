@@ -183,7 +183,53 @@
       }
 
     }
+.contacto{
+  background-color: #16213e;
+  padding: 20px;
+  width: 50%;
+  margin: 20px;
+  border-radius: 20px;
+}
 
+.contacto form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contacto input{
+  padding: 15px;
+  border-radius: 15px;
+
+
+}
+.contacto textarea{
+  border-radius: 15px;
+  padding: 15px;
+}
+.contacto button{
+  padding: 15px;
+  border-radius: 30px;
+  width: 50%;
+}
+
+/* 
+
+.contacto input,
+.contacto textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.contacto button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fce25a;
+  font-weight: bold;
+  cursor: pointer;
+} */
   </style>
 </head>
 
@@ -198,7 +244,7 @@
 
     <ul>
       <li>Inicio</li>
-      <li>Juegos</li>
+      <li class="play">Juegos</li>
       <li>Contacto</li>
     </ul>
 
@@ -289,9 +335,53 @@
   >
     Haz clic
   </button>
+  <button class="btn1">boton 1</button>
+ <!--  <button class="boton">Haz clic</button> --><!-- 
+<section class="contacto">
+  <h2>Contacto</h2>
+
+  <form id="formulario-contacto">
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <input type="email" id="correo" placeholder="Tu correo">
+    <textarea id="mensaje" placeholder="Tu mensaje"></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="respuesta"></p>
+</section>
+ -->
+<section class="contacto">
+  <h2>ESCRIBENOS</h2>
+  <form id="formulario-contacto">
+    <input type="text" id="nombre" placeholder="escribe tu nombre">
+    <input type="email" id="correo" placeholder="escribe tu correo">
+    <textarea id="mensaje" placeholder="deja tu mensaje"></textarea>
+    <button type="submit">Contactar</button>
+  </form>
+</section>
 
   <!-- JAVASCRIPT -->
   <script>
+    let titulo = document.querySelector("h1");
+    titulo.textContent="Super Brawlers plus"
+
+    let contenido = document.querySelector(".contenido");
+    contenido.style.backgroundColor = "blue";
+
+    let play = document.querySelector(".play");
+    play.addEventListener("click", ()=>{
+      console.log("ayuda para jugar")
+    });
+
+    let boton1 = document.querySelector(".btn1");
+    boton1.addEventListener("click",()=>{
+      console.log("oprimi el boton uno ")
+    })
+   /*  const titulo = document.querySelector("h1")
+    titulo.textContent="hola brawlers"
+    const contenido = document.querySelector(".contenido");
+    contenido.style.backgroundColor = "purple"; */
 
     // Selecciona todas las tarjetas
     const tarjetas = document.querySelectorAll(".personaje");
