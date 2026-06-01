@@ -212,7 +212,30 @@
   border-radius: 30px;
   width: 50%;
 }
-
+.btn1 {
+padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
+.boton2 {
+background-color: #16213e;
+border-radius: 15px;
+color: chartreuse;
+padding: 15px;
+}
+.boton3 {
+  padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
+.boton4 {
+   padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
 /* 
 
 .contacto input,
@@ -336,6 +359,17 @@
     Haz clic
   </button>
   <button class="btn1">boton 1</button>
+  <button
+    class="boton2">
+    boton2</button>
+   <button 
+   class="boton3">
+    boton3
+  </button>
+  <button
+  class="boton4">
+boton4</button>
+    
  <!--  <button class="boton">Haz clic</button> --><!-- 
 <section class="contacto">
   <h2>Contacto</h2>
@@ -363,6 +397,12 @@
 
   <!-- JAVASCRIPT -->
   <script>
+    let boton4 = document.querySelector(".boton4")
+    boton4.addEventListener("click", ()=> {console.log("buenos dias")})
+    let boton3 = document.querySelector(".boton3")
+    boton3.addEventListener("click", ()=> {console.log("como estas")})
+    let boton2 = document.querySelector(".boton2")
+boton2.addEventListener("click", ()=> {console.log("hola")})
     let titulo = document.querySelector("h1");
     titulo.textContent="Super Brawlers plus"
 
@@ -402,4 +442,5 @@
   </script>
 
 </body>
+
 </html>
