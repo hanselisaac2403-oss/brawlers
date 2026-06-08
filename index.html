@@ -187,7 +187,7 @@
   background-color: #16213e;
   padding: 20px;
   width: 50%;
-  margin: 20px;
+  margin: 20px auto;
   border-radius: 20px;
 }
 
@@ -235,6 +235,16 @@ color: chartreuse;
  background-color: #16213e;
   border-radius: 15px;
 color: chartreuse;
+}
+.botones {
+margin: 15px auto;
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+.oculto {
+  visibility: hidden;
 }
 /* 
 
@@ -358,7 +368,9 @@ color: chartreuse;
   >
     Haz clic
   </button>
-  <button class="btn1">boton 1</button>
+  <div class ="botones">
+  
+  <button class="btn1">contacto</button>
   <button
     class="boton2">
     boton2</button>
@@ -369,7 +381,7 @@ color: chartreuse;
   <button
   class="boton4">
 boton4</button>
-    
+  </div>
  <!--  <button class="boton">Haz clic</button> --><!-- 
 <section class="contacto">
   <h2>Contacto</h2>
@@ -413,9 +425,11 @@ boton2.addEventListener("click", ()=> {console.log("hola")})
     play.addEventListener("click", ()=>{
       console.log("ayuda para jugar")
     });
+let contacto = document.querySelector(".contacto")
 
     let boton1 = document.querySelector(".btn1");
     boton1.addEventListener("click",()=>{
+      contacto.classList.toggle("oculto")
       console.log("oprimi el boton uno ")
     })
    /*  const titulo = document.querySelector("h1")
