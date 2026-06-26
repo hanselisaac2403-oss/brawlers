@@ -315,7 +315,8 @@ gap: 10px;
           ⭐ Rareza: Legendario <br>
           🧩 Clase: Soporte <br>
           ❤️ Vida: Media <br>
-          ⚡ Velocidad: Muy rápida
+          ⚡ Velocidad: Muy rápida  <br>
+           <a href="kit.html">  ver mas informacion👀 </a>
         </p>
       </div>
 
@@ -360,7 +361,63 @@ gap: 10px;
     </div>
 
   </div>
+<div class="galeria">
+ <div class="personaje">
 
+      <img src="https://tse2.mm.bing.net/th/id/OIP.d-77Fl2bm1XrCm0mkzJDiAAAAA?cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3"alt="Poco">
+
+      <div class="info">
+        <h2>POCO</h2>
+
+        <p>
+          🐱 Características generales de poco <br>
+          ⭐ Rareza: comun <br>
+          🧩 Clase: Soporte <br>
+          ❤️ Vida: Media <br>
+          ⚡ Velocidad: media
+        </p>
+      </div>
+
+    </div>
+
+    <!-- LEON -->
+    <div class="personaje">
+
+      <img src="https://preview.redd.it/a-screenshot-of-a-smear-frame-from-every-brawlers-animation-v0-y4b0cz24tgaa1.jpg?width=792&format=pjpg&auto=webp&s=811d9833da761daef01df536b82f0d1245c0df3c" alt="">
+
+      <div class="info">
+        <h2>Mandy</h2>
+
+        <p>
+          🦎 Características generales <br>
+          ⭐ Rareza: Epic <br>
+          🧩 Clase: Francotirador <br>
+          ❤️ Vida: Baja-media <br>
+          ⚡ Velocidad: lenta
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CHESTER -->
+    <div class="personaje">
+
+      <img src="https://preview.redd.it/bonnie-sounds-like-a-high-pitched-and-more-hyper-version-of-v0-p6g0et3a2kjc1.png?auto=webp&s=6f5a027822c4df7cec65599d4373fe422b2bb51f" alt="bonny">
+
+      <div class="info">
+        <h2>Bonny</h2>
+
+        <p>
+          🎭 Características generales <br>
+          ⭐ Rareza: epic <br>
+          🧩 Clase: Tiro de elite <br>
+          ❤️ Vida: media <br>
+          ⚡ Velocidad: media 
+        </p>
+      </div>
+
+    </div>
+</div>
   <!-- BOTÓN -->
   <button
     class="boton"
@@ -382,6 +439,9 @@ gap: 10px;
   class="boton4">
 boton4</button>
   </div>
+    <!-- KIT -->
+   
+
  <!--  <button class="boton">Haz clic</button> --><!-- 
 <section class="contacto">
   <h2>Contacto</h2>
@@ -406,15 +466,14 @@ boton4</button>
     <button type="submit">Contactar</button>
   </form>
 </section>
+ 
 
   <!-- JAVASCRIPT -->
   <script>
     let boton4 = document.querySelector(".boton4")
     boton4.addEventListener("click", ()=> {console.log("buenos dias")})
-    let boton3 = document.querySelector(".boton3")
-    boton3.addEventListener("click", ()=> {console.log("como estas")})
-    let boton2 = document.querySelector(".boton2")
-boton2.addEventListener("click", ()=> {console.log("hola")})
+  
+    
     let titulo = document.querySelector("h1");
     titulo.textContent="Super Brawlers plus"
 
@@ -432,6 +491,32 @@ let contacto = document.querySelector(".contacto")
       contacto.classList.toggle("oculto")
       console.log("oprimi el boton uno ")
     })
+    //botonnumero2
+  let boton2 = document.querySelector(".boton2")
+boton2.addEventListener("click", ()=> {
+if(document.body.style.backgroundColor === "green"){
+    document.body.style.backgroundColor = "#ff1010";
+  } else {
+    document.body.style.backgroundColor = "green";
+  }
+
+})
+
+//boton 3
+  let boton3 = document.querySelector(".boton3")
+    boton3.addEventListener("click", ()=> {
+      if(contenido.style.backgroundColor === "green") {
+      contenido.style.backgroundColor = "blue";
+      } else {
+        contenido.style.backgroundColor = "green";
+      }
+    })
+
+
+
+//fin del boton 3
+
+    //fin boton 2
    /*  const titulo = document.querySelector("h1")
     titulo.textContent="hola brawlers"
     const contenido = document.querySelector(".contenido");
