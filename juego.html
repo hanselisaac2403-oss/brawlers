@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎮 Atrapa Brawlers - Juego</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* BODY */
+    body {
+      background-color: #ff1010;
+      color: #fcfcfb;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    /* NAVBAR (igual que las otras páginas) */
+    .barra-navegacion {
+      background-color: #fce25a;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    .barra-navegacion ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .barra-navegacion li,
+    .barra-navegacion a {
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* TÍTULO DEL JUEGO */
+    h1 {
+      font-size: 40px;
+      margin: 20px;
+      text-shadow: 3px 3px 0 black;
+    }
+
+    /* MARCADOR (puntos y tiempo) */
+    .marcador {
+      background-color: #16213e;
+      border: 3px solid #fce25a;
+      border-radius: 15px;
+      padding: 15px 30px;
+      display: inline-flex;
+      gap: 40px;
+      margin: 10px auto;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .marcador span {
+      color: chartreuse;
+    }
+
+    /* ÁREA DE JUEGO (donde aparecen los brawlers) */
+    #area-juego {
+      background-color: #0f3460;
+      border: 4px solid #e94560;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      margin: 20px auto;
+      position: relative;  /* muy importante: los brawlers se posicionan dentro de aquí */
+      overflow: hidden;
+    }
+
+    /* BRAWLERS que aparecen */
+    .brawler {
+      position: absolute;  /* nos permite colocarlos en cualquier sitio con top/left */
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #fce25a;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .brawler:hover {
+      transform: scale(1.15);  /* crecen un poquito al pasar el mouse */
+    }
+
+    /* BOTÓN DE JUGAR */
+    .boton-jugar {
+      background-color: #fce25a;
+      color: black;
+      font-size: 24px;
+      font-weight: bold;
+      border: none;
+      border-radius: 15px;
+      padding: 15px 40px;
+      cursor: pointer;
+      margin: 10px;
+      box-shadow: 0 5px 0 #c0a800;
+    }
+
+    .boton-jugar:active {
+      transform: translateY(5px);
+      box-shadow: 0 0 0 #c0a800;
+    }
+
+    /* MENSAJE FINAL */
+    #mensaje-final {
+      font-size: 30px;
+      margin: 20px;
+      min-height: 40px;
+    }
+
+    /* ENLACE PARA VOLVER */
+    .volver {
+      display: inline-block;
+      margin: 20px;
+      color: #fce25a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .volver:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="barra-navegacion">
+    <div class="logo">
+      <img src="https://static.wikia.nocookie.net/brawlstars/images/0/01/Brawl_Stars_Logo.png/revision/latest?cb=20250424202238&path-prefix=es" alt="logo">
+    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html">Juegos</a></li>
+      <li><a href="contacto.html">contacto</a></li>
+      <li><a href="supercell.html">Supercell</a></li>
+    </ul>
+  </nav>
+
+  <h1>🎮 Atrapa Brawlers</h1>
+
+  <!-- MARCADOR -->
+  <div class="marcador">
+    Puntos: <span id="puntos">0</span>
+    ⏱️ Tiempo: <span id="tiempo">30</span>
+  </div>
+
+  <!-- BOTÓN PARA EMPEZAR -->
+  <button class="boton-jugar" id="boton-empezar">▶ ¡JUGAR!</button>
+
+  <!-- ÁREA DONDE APARECEN LOS BRAWLERS -->
+  <div id="area-juego"></div>
+
+  <!-- MENSAJE FINAL -->
+  <p id="mensaje-final"></p>
+
+  <!-- VOLVER AL INICIO -->
+  <a href="index.html" class="volver">⬅ Volver al inicio</a>
+
+
+  <script>
+    // ========================================
+    // 🎮 JUEGO: ATRAPA BRAWLERS
+    // ========================================
+    // La idea es simple:
+    //   1. Aparecen brawlers por la pantalla
+    //   2. Les haces clic para ganar puntos
+    //   3. Tienes 30 segundos para atrapar todos los que puedas
+    // ========================================
+
+
+    // --- 1. VARIABLES (cajas donde guardamos información) ---
+    let puntos = 0;          // aquí guardamos los puntos
+    let tiempo = 30;         // aquí guardamos los segundos que quedan
+    let jugando = false;     // ¿estamos jugando ahora mismo? true/false
+    let intervaloBrawlers;   // recordatorio para crear brawlers cada cierto tiempo
+    let intervaloTiempo;     // recordatorio para restar el tiempo cada segundo
+
+
+    // --- 2. CONSEGUIR LAS PARTES DE LA PÁGINA ---
+    const botonEmpezar = document.getElementById("boton-empezar");
+    const areaJuego = document.getElementById("area-juego");
+    const textoPuntos = document.getElementById("puntos");
+    const textoTiempo = document.getElementById("tiempo");
+    const mensajeFinal = document.getElementById("mensaje-final");
+
+
+    // --- 3. LAS IMÁGENES DE LOS BRAWLERS ---
+    // Una lista (array) con las fotos que usaremos
+    const fotosBrawlers = [
+      "https://tse3.mm.bing.net/th/id/OIP.57A7V4EKU6p82pqN-1f64AHaFj?w=600&h=450&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2024/07/an-image-of-leon-in-brawl-stars.jpg",
+      "https://tse2.mm.bing.net/th/id/OIP.d-77Fl2bm1XrCm0mkzJDiAAAAA?cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "https://preview.redd.it/a-screenshot-of-a-smear-frame-from-every-brawlers-animation-v0-y4b0cz24tgaa1.jpg?width=792&format=pjpg&auto=webp&s=811d9833da761daef01df536b82f0d1245c0df3c"
+    ];
+
+
+    // --- 4. FUNCIÓN PARA CREAR UN BRAWLER ---
+    // Una función es como una receta: nos dice paso a paso qué hacer
+    function crearBrawler() {
+      if (!jugando) return;  // si no estamos jugando, no hace nada
+
+      // 4a. Creamos un nuevo elemento (como una imagen nueva)
+      const brawler = document.createElement("img");
+
+      // 4b. Elegimos una foto al azar de la lista
+      const numeroAlAzar = Math.floor(Math.random() * fotosBrawlers.length);
+      brawler.src = fotosBrawlers[numeroAlAzar];
+      brawler.className = "brawler";
+
+      // 4c. Lo colocamos en un sitio al azar dentro del área de juego
+      // Math.random() da un número entre 0 y 1, lo multiplicamos para que quepa
+      const areaAncho = areaJuego.clientWidth - 90;   // 90 = tamaño del brawler
+      const areaAlto = areaJuego.clientHeight - 90;
+      brawler.style.left = Math.random() * areaAncho + "px";
+      brawler.style.top = Math.random() * areaAlto + "px";
+
+      // 4d. ¡Si le haces clic, ganas un punto!
+      brawler.addEventListener("click", function () {
+        puntos = puntos + 1;              // sumamos 1 punto
+        textoPuntos.textContent = puntos; // lo mostramos en la pantalla
+        brawler.remove();                 // el brawler desaparece
+      });
+
+      // 4e. Lo metemos dentro del área de juego
+      areaJuego.appendChild(brawler);
+
+      // 4f. El brawler desaparece solo después de 2 segundos si no le haces clic
+      setTimeout(function () {
+        if (brawler.parentNode) {
+          brawler.remove();
+        }
+      }, 2000);
+    }
+
+
+    // --- 5. FUNCIÓN PARA EMPEZAR EL JUEGO ---
+    function empezarJuego() {
+      // Reiniciamos todo
+      puntos = 0;
+      tiempo = 30;
+      jugando = true;
+      textoPuntos.textContent = "0";
+      textoTiempo.textContent = "30";
+      mensajeFinal.textContent = "";
+      botonEmpezar.textContent = "🎮 Jugando...";
+      botonEmpezar.disabled = true;
+
+      // Cada 700 milisegundos aparece un brawler nuevo
+      intervaloBrawlers = setInterval(crearBrawler, 700);
+
+      // Cada 1000 milisegundos (1 segundo) restamos 1 al tiempo
+      intervaloTiempo = setInterval(function () {
+        tiempo = tiempo - 1;
+        textoTiempo.textContent = tiempo;
+
+        // Cuando el tiempo llega a 0, el juego termina
+        if (tiempo <= 0) {
+          terminarJuego();
+        }
+      }, 1000);
+    }
+
+
+    // --- 6. FUNCIÓN PARA TERMINAR EL JUEGO ---
+    function terminarJuego() {
+      jugando = false;
+
+      // Paramos los "recordatorios" (que aparezcan brawlers y baje el tiempo)
+      clearInterval(intervaloBrawlers);
+      clearInterval(intervaloTiempo);
+
+      // Limpiamos los brawlers que quedaron en la pantalla
+      areaJuego.innerHTML = "";
+
+      // Mensaje según los puntos conseguidos
+      let mensaje = "";
+      if (puntos >= 30) {
+        mensaje = "🏆 ¡INCREÍBLE! Eres un PRO: " + puntos + " puntos!";
+      } else if (puntos >= 15) {
+        mensaje = "⭐ ¡Muy bien! " + puntos + " puntos. ¡Sigue practicando!";
+      } else {
+        mensaje = "🙂 ¡Buen intento! " + puntos + " puntos. ¡Inténtalo otra vez!";
+      }
+      mensajeFinal.textContent = mensaje;
+
+      // Volvemos a activar el botón
+      botonEmpezar.textContent = "▶ ¡JUGAR OTRA VEZ!";
+      botonEmpezar.disabled = false;
+    }
+
+
+    // --- 7. CONECTAR EL BOTÓN CON LA FUNCIÓN ---
+    botonEmpezar.addEventListener("click", empezarJuego);
+
+  </script>
+
+</body>
+</html>
