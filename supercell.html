@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supercell - Brawl Stars & Clash Royale</title>
+  
+  <style>
+    /* RESET */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    /* BODY */
+    body {
+      background-color: #ff1010;
+      color: #fcfcfb;
+      font-family: Arial, sans-serif;
+    }
+
+    /* NAVBAR */
+    .barra-navegacion {
+      background-color: #fce25a;
+      padding: 15px 20px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      flex-wrap: wrap;
+    }
+
+    .logo img{
+      width: 80px;
+    }
+
+    .barra-navegacion ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .barra-navegacion li, .barra-navegacion a {
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
+      text-decoration: none;
+    }
+    
+    .barra-navegacion a:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .contenedor-principal {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ENCABEZADO SUPERCELL */
+    .supercell-intro {
+      background-color: #16213e;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      border: 3px solid #fce25a;
+    }
+
+    .supercell-intro h1 {
+      font-size: 2.8em;
+      color: #fce25a;
+      margin-bottom: 10px;
+    }
+
+    .supercell-intro p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    /* JUEGOS CONTENEDOR */
+    .juegos-seccion {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .juego-card {
+      background-color: #16213e;
+      border-radius: 15px;
+      padding: 25px;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      transition: transform 0.3s;
+    }
+
+    .juego-card:hover {
+      transform: scale(1.02);
+    }
+
+    .juego-card img {
+      width: 100%;
+      max-width: 380px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 3px solid #e94560;
+    }
+
+    .juego-info {
+      flex: 1;
+    }
+
+    .juego-info h2 {
+      font-size: 2em;
+      color: chartreuse;
+      margin-bottom: 15px;
+    }
+
+    .juego-info p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .juego-detalles-lista {
+      list-style: none;
+    }
+
+    .juego-detalles-lista li {
+      font-size: 1.05em;
+      margin-bottom: 8px;
+    }
+
+    .juego-detalles-lista li strong {
+      color: #fce25a;
+    }
+
+    /* BOTÓN VOLVER */
+    .btn-volver {
+      display: inline-block;
+      align-self: center;
+      margin: 20px 0;
+      color: #16213e;
+      background-color: chartreuse;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .btn-volver:hover {
+      transform: scale(1.05);
+      background-color: #8cff00;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .barra-navegacion {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .barra-navegacion ul {
+        justify-content: center;
+      }
+      .juego-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .juego-card img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="barra-navegacion">
+    <div class="logo">
+      <a href="index.html">
+        <img src="https://static.wikia.nocookie.net/brawlstars/images/0/01/Brawl_Stars_Logo.png/revision/latest?cb=20250424202238&path-prefix=es" alt="logo">
+      </a>
+    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li class="play">Juegos</li>
+      <li>Contacto</li>
+      <li><a href="supercell.html">Supercell</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="contenedor-principal">
+    
+    <!-- INTRO DE LA EMPRESA -->
+    <header class="supercell-intro">
+      <h1>Supercell</h1>
+      <p>
+        Supercell es una desarrolladora de videojuegos finlandesa fundada en 2010. Es mundialmente conocida por crear experiencias multijugador extremadamente divertidas, adictivas y duraderas en dispositivos móviles. ¡Aquí te presentamos dos de sus más grandes éxitos globales!
+      </p>
+    </header>
+
+    <!-- LISTA DE JUEGOS -->
+    <section class="juegos-seccion">
+      
+      <!-- BRAWL STARS -->
+      <div class="juego-card">
+        <img src="https://supercell.com/images/b28cd5cc8b8039a8f1a18111f4a7d76e/FINAL_-_1026_Loading_Screens__Update_64_-_Stranger_Things__3840x2160.png" alt="Brawl Stars">
+        <div class="juego-info">
+          <h2>Brawl Stars</h2>
+          <p>
+            Un videojuego multijugador rápido y dinámico donde los jugadores compiten en diversas modalidades 3v3 o en combates de todos contra todos (Supervivencia). Colecciona decenas de brawlers únicos y mejora sus habilidades especiales.
+          </p>
+          <ul class="juego-detalles-lista">
+            <li><strong>🎮 Género:</strong> Acción / Battle Royale / Hero Shooter</li>
+            <li><strong>📅 Lanzamiento:</strong> 2018</li>
+            <li><strong>👥 Modo de juego:</strong> Multijugador en línea (3v3 y solitario)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CLASH ROYALE -->
+      <div class="juego-card">
+        <img src="https://supercell.com/_next/static/media/og_clashroyale.d235f90b.jpg" alt="Clash Royale">
+        <div class="juego-info">
+          <h2>Clash Royale</h2>
+          <p>
+            Un emocionante juego de estrategia en tiempo real que combina cartas coleccionables y defensa de torres. Despliega tus tropas del universo de Clash of Clans para derribar las torres del rey y de las princesas enemigas en duelos de ritmo frenético.
+          </p>
+          <ul class="juego-detalles-lista">
+            <li><strong>🎮 Género:</strong> Estrategia en tiempo real / Cartas</li>
+            <li><strong>📅 Lanzamiento:</strong> 2016</li>
+            <li><strong>👥 Modo de juego:</strong> Duelo 1v1 o 2v2 en tiempo real</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BOTÓN REGRESAR -->
+    <a href="index.html" class="btn-volver">⬅ Volver al Inicio</a>
+  </div>
+
+</body>
+</html>
