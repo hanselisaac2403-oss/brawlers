@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+      <style>
+
+    /* RESET */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    /* BODY */
+    body {
+      background-color: #ff1010;
+      color: #fcfcfb;
+      font-family: Arial, sans-serif;
+    }
+
+    /* NAVBAR */
+    .barra-navegacion {
+      background-color: #fce25a;
+      padding: 15px 20px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      flex-wrap: wrap;
+    }
+
+    .logo img{
+      width: 80px;
+    }
+
+    .barra-navegacion ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .barra-navegacion li, .barra-navegacion a {
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
+      text-decoration: none;
+    }
+
+    .barra-navegacion a:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .contenedor-principal {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* CONTENIDO */
+    .contenido {
+      background-color: #16213e;
+      padding: 20px;
+      border-radius: 15px;
+
+      flex: 2;
+      min-width: 280px;
+    }
+
+    /* BARRA LATERAL */
+    .barra-lateral {
+      background-color: #0f3460;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #e94560;
+
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* GALERÍA */
+    .galeria {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      padding: 20px;
+    }
+
+    /* TARJETAS */
+    .personaje {
+      background-color: #16213e;
+      border-radius: 15px;
+      padding: 15px;
+
+      width: 100%;
+      max-width: 400px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition: transform 0.3s;
+    }
+
+    .personaje:hover{
+      transform: scale(1.03);
+    }
+
+    /* IMÁGENES */
+    .personaje img {
+      width: 100%;
+      height: 250px;
+
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* INFO OCULTA */
+    .info {
+      margin-top: 10px;
+
+      max-height: 0;
+      overflow: hidden;
+
+      opacity: 0;
+
+      transition: all 0.5s ease;
+    }
+
+    /* INFO VISIBLE */
+    .personaje.activo .info{
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .info p {
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    /* BOTÓN */
+    .boton {
+      display: block;
+
+      margin: 30px auto;
+
+      color: chartreuse;
+      background-color: black;
+
+      border: none;
+      border-radius: 10px;
+
+      padding: 15px 25px;
+
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      .barra-navegacion {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .barra-navegacion ul {
+        justify-content: center;
+      }
+
+      .contenedor-principal {
+        flex-direction: column;
+      }
+
+      .personaje img {
+        height: 200px;
+      }
+
+    }
+.contacto{
+  background-color: #16213e;
+  padding: 20px;
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 20px;
+}
+
+.contacto form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contacto input{
+  padding: 15px;
+  border-radius: 15px;
+
+
+}
+.contacto textarea{
+  border-radius: 15px;
+  padding: 15px;
+}
+.contacto button{
+  padding: 15px;
+  border-radius: 30px;
+  width: 50%;
+}
+.btn1 {
+padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
+.boton2 {
+background-color: #16213e;
+border-radius: 15px;
+color: chartreuse;
+padding: 15px;
+}
+.boton3 {
+  padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
+.boton4 {
+   padding: 15px;
+ background-color: #16213e;
+  border-radius: 15px;
+color: chartreuse;
+}
+.botones {
+margin: 15px auto;
+display: flex;
+justify-content: center;
+gap: 10px;
+}
+
+.oculto {
+  visibility: hidden;
+}
+/* 
+
+.contacto input,
+.contacto textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.contacto button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fce25a;
+  font-weight: bold;
+  cursor: pointer;
+} */
+  </style>
+</head>
+<body>
+
+    <nav class="barra-navegacion">
+
+    <div class="logo">
+      <img src="https://static.wikia.nocookie.net/brawlstars/images/0/01/Brawl_Stars_Logo.png/revision/latest?cb=20250424202238&path-prefix=es" alt="logo">
+    </div>
+
+    <ul>
+      <li>Inicio</li>
+      <li class="play">Juegos</li>
+      <li><a href="contacto.html">contacto</a></li>
+      <li><a href="supercell.html">Supercell</a></li>
+    </ul>
+
+  </nav>
+
+  
+  <!-- CONTENIDO -->
+  <div class="contenedor-principal">
+
+    <main class="contenido">
+      <h1>Brawler</h1>
+      <p>Stats de los brawlers.</p>
+    </main>
+
+    <aside class="barra-lateral">
+      <h3>⚡ Datos Curiosos</h3>
+      <p>Nivel: Principiante de Código</p>
+      <p>Poder especial: Aprender rápido</p>
+    </aside>
+
+  </div>
+
+    <h1>Contacto</h1>
+    <section class="contacto">
+  <h2>ESCRIBENOS</h2>
+  <form id="formulario-contacto">
+    <input type="text" id="nombre" placeholder="escribe tu nombre">
+    <input type="email" id="correo" placeholder="escribe tu correo">
+    <textarea id="mensaje" placeholder="deja tu mensaje"></textarea>
+    <button type="submit">Contactar</button>
+  </form>
+</section>
+
+</body>
+</html>

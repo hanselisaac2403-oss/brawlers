@@ -19,3 +19,5 @@ brawlers.forEach((brawler) => {
 saludar("juan ");
 saludar("pedro ")
 console.log("sigma papiador " + nombre)
+
+
